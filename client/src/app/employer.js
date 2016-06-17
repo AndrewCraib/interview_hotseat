@@ -13,3 +13,5 @@ Employers.prototype ={
   }
 
 }
+
+module.exports = Employers;
