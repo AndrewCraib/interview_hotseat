@@ -12,7 +12,5 @@ Student.prototype = {
       image: profilePic
     })
   },
-
-
 }
 
