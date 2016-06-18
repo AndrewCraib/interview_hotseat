@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var MongoClient = require('mongodb').MongoClient;
 
-var url = "/.mongodb://localhost:27017/bucket_list";
+var url = "mongodb://localhost:27017/bucket_list";
 
 
 app.get('/', function(req, res){
