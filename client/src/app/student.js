@@ -8,8 +8,8 @@ Student.prototype = {
 
   addStudent: function(name, profilePic){
     this.listOfStudents.push({
-      studentName: name,
-      image: profilePic
+      'studentName': name,
+      'image': profilePic
     })
   },
 }
