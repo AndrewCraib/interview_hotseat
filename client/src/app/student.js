@@ -1,16 +1,24 @@
-var Students = function(){
+var Students = function(name, image){
 
-  this.listOfStudents = []
+  this.studentName = name;
+  this.image = image;
 
 }
 
 Student.prototype = {
 
-  addStudent: function(name, profilePic){
-    this.listOfStudents.push({
-      'studentName': name,
-      'image': profilePic
-    })
-  },
+  save: function(){
+      var url = 'http://localhost:3000/lists';
+      var request = new XMLHttpRequest();
+      request.open("POST", url);
+      request.setRequestHeader("Content-Type", "application/json");
+      request.onload = function(){
+        if(request.status === 200){
+        }
+      }
+      request.send(JSON.stringify(this));
+    }
+
+
 }
 
