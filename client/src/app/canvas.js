@@ -1,3 +1,4 @@
+
 var clearButton = document.getElementById('clearButton');
 
 
@@ -162,17 +163,6 @@ var clearButton = document.getElementById('clearButton');
     mx = e.pageX - offsetX;
     my = e.pageY - offsetY;
 
-
     return {x: mx, y: my};
   }
-
-
-
-
-
-
-
-
-
-
 

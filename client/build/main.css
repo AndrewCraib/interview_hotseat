@@ -1,5 +1,5 @@
 body{
-  background:#1a1a1a;
+  background: white;
 }
 
 canvas {
@@ -8,7 +8,7 @@ canvas {
 }
 
 button {
-    background: linear-gradient(#990000, #661400); 
+    background: linear-gradient(#006644, #003322); 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -21,26 +21,12 @@ button {
 
     
     h1 {
-        color: #990000;
-        font-family: 'Audiowide', cursive;
+        color: #e6fff7;
+        font-family: 'Amatic SC', cursive;
         font-size:70px;
-       
-    }
-    h1 span {
-        color: white;
-        font-family: 'Audiowide', cursive;
-    }
-
-    h2 {
-      color:#262626;
-      font-family: 'Audiowide', cursive;
-      font-size: 500px;
-     position:absolute;
-     bottom:0;
-     width:100%;
-     height:100px;
-     /*text-align: right;*/
-    }
+        border: solid 4px #003323;
+        background-color: #006644;
+ }
 
    footer {
       position:absolute;
@@ -55,3 +41,19 @@ button {
     padding-left: 40px;
     /*text-align: center;*/
    }
+
+
+
+  #std-ul {
+  color: blue;
+  display: inline-block;
+}
+
+#emp-ul {
+  color:red;
+  float: right;
+}
+
+ul {
+  display: inline-block;
+}
