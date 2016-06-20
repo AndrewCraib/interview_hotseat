@@ -31,7 +31,7 @@ app.post('/lists', function(req,res) {
   console.log('body',req.body);
   MongoClient.connect(url, function(err,db) {
     var collection = db.collection('participants');
-    collection.insert({"Name": req.body.name, "image": req.body.image, "type": req.body.type})
+    collection.insert({"name": req.body.name, "image": req.body.image, "type": req.body.type, "number": req.body.number})
     res.status(200).end();
     db.close();
   })

@@ -22,18 +22,18 @@ Event.prototype ={
    request.onload = function(){
      if(request.status === 200){
        var lists = JSON.parse(request.responseText)
-       for(info of lists){
-        if(info.type === 'employer'){
-         this.addEmployer(info);
-       }
-       else{
-        this.addStudent(info);
+       for (var i = 0; i < lists.length; i++) {
+        if(lists[i].type === 'employer') {
+          this.addEmployer(lists[i]);
+        }
+        else{
+          this.addStudent(lists[i]);
+        }
       }
+      this.onFetchSuccess();
     }
-    this.onFetchSuccess();
-  }
-}.bind(this);
-request.send(null);
+  }.bind(this);
+  request.send(null);
 }
 
 }
