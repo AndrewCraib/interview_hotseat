@@ -1,5 +1,3 @@
-var clearButton = document.getElementById('clearButton');
-
 function Shape(x, y, w, h, fill, number) {
 
   this.x = x || 0;
@@ -113,6 +111,13 @@ CanvasState.prototype.addShape = function(shape) {
 CanvasState.prototype.clear = function() {
   this.context.clearRect(0, 0, this.width, this.height);
 }
+
+
+
+// clearButton.onclick = function(e) {
+// this.context.clearRect(0,0, this.width, this.height);
+// }
+
 
 CanvasState.prototype.draw = function() {
 
