@@ -44,35 +44,103 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Event = __webpack_require__(3);
+	var Event = __webpack_require__(1);
 	var Employer = __webpack_require__(2);
-	var Student = __webpack_require__(4);
-	var ListView = __webpack_require__(5);
+	var Student = __webpack_require__(3);
+	var ListView = __webpack_require__(4);
 	
 	window.onload = function(){
 	
 	  var event = new Event();
 	  var lists = new ListView(event);
 	
-	  lists.render();
+	  event.onFetchSuccess = function(){
+	    lists.render();
+	  }
 	
+	  event.fetchLists();
 	
-	}
+	  var empBtn = document.getElementById('employer-btn');
+	  var empName = document.getElementById('emp-name');
+	  var empImg = document.getElementById('emp-img');
+	  var stdBtn = document.getElementById('student-btn');
+	  var stdName = document.getElementById('std-name');
+	  var stdImg = document.getElementById('std-img');
 	
-	var employerAdd = function(){
+	  empBtn.onsubmit = function(e){
+	    e.preventDefault();
+	    var newEmp = new Employer(empName.value, empImg.value)
+	    event.addEmployer(newEmp);
+	    lists.render()
+	    console.log(event.employers);
+	    newEmp.save();
+	  }
 	
+	  stdBtn.onsubmit = function(e){
+	    e.preventDefault();
+	    var newStd = new Student(stdName.value, stdImg.value);
+	    event.addStudent(newStd);
+	    lists.render()
+	    newStd.save()
+	  }
 	
 	
 	}
 
 /***/ },
-/* 1 */,
+/* 1 */
+/***/ function(module, exports) {
+
+	
+	var Event = function(){
+	  this.students = [];
+	  this.employers = [];
+	  this.onFetchSuccess = null;
+	}
+	
+	Event.prototype ={
+	
+	  addEmployer: function(employer){
+	    this.employers.push(employer)
+	  },
+	
+	  addStudent: function(student){
+	    this.students.push(student)
+	  },
+	
+	  fetchLists:function(){
+	   var url = 'http://localhost:3000/lists';
+	   var request = new XMLHttpRequest();
+	   request.open("GET", url);
+	   request.onload = function(){
+	     if(request.status === 200){
+	       var lists = JSON.parse(request.responseText)
+	       for(info of lists){
+	        if(info.type === 'employer'){
+	         this.addEmployer(info);
+	       }
+	       else{
+	        this.addStudent(info);
+	      }
+	    }
+	    this.onFetchSuccess();
+	  }
+	}.bind(this);
+	request.send(null);
+	}
+	
+	}
+	
+	module.exports = Event;
+
+/***/ },
 /* 2 */
 /***/ function(module, exports) {
 
 	var Employer = function(name, logo){
-	  this.employersName = name;
-	  this.employersLogo = logo;
+	  this.name = name;
+	  this.image = logo;
+	  this.type = 'employer'
 	}
 	
 	
@@ -101,49 +169,11 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	var Event = function(){
-	  this.students = [];
-	  this.employers = [];
-	}
-	
-	Event.prototype ={
-	
-	  addEmployer: function(employer){
-	    this.employers.push(employer)
-	  },
-	
-	  addStudent: function(student){
-	    this.students.push(student)
-	  },
-	
-	  fetchLists:function(){
-	     var url = 'http://localhost:3000/lists';
-	     var request = new XMLHttpRequest();
-	     request.open("GET", url);
-	     request.onload = function(){
-	       if(request.status === 200){
-	         var list = JSON.parse(request.responseText)
-	         for(info of list){
-	           this.addAccount(new Account(account));
-	         }
-	         this.onFetchSuccess();
-	       }
-	     }.bind(this);
-	     request.send(null);
-	   }
-	
-	}
-	
-	module.exports = Event;
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
 	var Student = function(name, image){
 	
-	  this.studentName = name;
+	  this.name = name;
 	  this.image = image;
+	  this.type = 'student'
 	
 	}
 	
@@ -169,7 +199,7 @@
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 	var ListView = function( event ){
@@ -182,15 +212,19 @@
 	    var employerList = document.getElementById('emp-ul');
 	    console.log(this.event);
 	
+	    studentList.innerHTML = "";
+	    employerList.innerHTML = "";
+	
 	    for(employer of this.event.employers){
+	      console.log(employer);
 	      var li = document.createElement('li');
-	      li.innerText = employer.logo + " employer name " + employer.name;
+	      li.innerText = employer.logo + " employer name " + employer.Name;
 	      employerList.appendChild(li);
 	    }
 	
 	    for(student of this.event.students){
 	      var li = document.createElement('li');
-	      li.innerText = student.picture + " student name " + student.name;
+	      li.innerText = student.picture + " student name " + student.Name;
 	      studentList.appendChild(li)
 	    }
 	

@@ -1,7 +1,8 @@
 var Student = function(name, image){
 
-  this.studentName = name;
+  this.name = name;
   this.image = image;
+  this.type = 'student'
 
 }
 

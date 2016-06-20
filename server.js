@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var MongoClient = require('mongodb').MongoClient;
 
-var url = "mongodb://localhost:27017/bucket_list";
+var url = "mongodb://localhost:27017/hotseat";
 
 
 app.get('/', function(req, res){
@@ -19,13 +19,8 @@ app.get('/', function(req, res){
 
 app.get('/lists', function(req, res){
   MongoClient.connect(url, function(err, db){
-    var students = db.collection('students');
-    var employers = db.collection('employers');
-    students.find({}).toArray(function(err, docs){
-      res.json(docs);
-      db.close();
-    });
-    employers.find({}).toArray(function(err, docs){
+    var collection = db.collection('participants');
+    collection.find({}).toArray(function(err, docs){
       res.json(docs);
       db.close();
     });
@@ -35,10 +30,8 @@ app.get('/lists', function(req, res){
 app.post('/lists', function(req,res) {
   console.log('body',req.body);
   MongoClient.connect(url, function(err,db) {
-    var students = db.collection('students');
-    var employers = db.collection('employers');
-    students.insert({"student Name": req.body.name, "image": req.body.picture})
-    employers.insert({'employersName': req.body.name, 'employers logo': req.body.logo})
+    var collection = db.collection('participants');
+    collection.insert({"Name": req.body.name, "image": req.body.image, "type": req.body.type})
     res.status(200).end();
     db.close();
   })

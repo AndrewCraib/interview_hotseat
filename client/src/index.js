@@ -8,13 +8,35 @@ window.onload = function(){
   var event = new Event();
   var lists = new ListView(event);
 
-  lists.render();
+  event.onFetchSuccess = function(){
+    lists.render();
+  }
 
+  event.fetchLists();
 
-}
+  var empBtn = document.getElementById('employer-btn');
+  var empName = document.getElementById('emp-name');
+  var empImg = document.getElementById('emp-img');
+  var stdBtn = document.getElementById('student-btn');
+  var stdName = document.getElementById('std-name');
+  var stdImg = document.getElementById('std-img');
 
-var employerAdd = function(){
+  empBtn.onsubmit = function(e){
+    e.preventDefault();
+    var newEmp = new Employer(empName.value, empImg.value)
+    event.addEmployer(newEmp);
+    lists.render()
+    console.log(event.employers);
+    newEmp.save();
+  }
 
+  stdBtn.onsubmit = function(e){
+    e.preventDefault();
+    var newStd = new Student(stdName.value, stdImg.value);
+    event.addStudent(newStd);
+    lists.render()
+    newStd.save()
+  }
 
 
 }
