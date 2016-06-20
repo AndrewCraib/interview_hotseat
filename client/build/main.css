@@ -1,5 +1,57 @@
+body{
+  background:#1a1a1a;
+}
+
 canvas {
   border: 1px solid black;
   background-image: url(http://www.hollandaleapartments.com/images/floor%20plans/Embassy-floor-plan.png);
 }
 
+button {
+    background: linear-gradient(#990000, #661400); 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+    border-radius: 8%;
+    }
+
+    
+    h1 {
+        color: #990000;
+        font-family: 'Audiowide', cursive;
+        font-size:70px;
+       
+    }
+    h1 span {
+        color: white;
+        font-family: 'Audiowide', cursive;
+    }
+
+    h2 {
+      color:#262626;
+      font-family: 'Audiowide', cursive;
+      font-size: 500px;
+     position:absolute;
+     bottom:0;
+     width:100%;
+     height:100px;
+     /*text-align: right;*/
+    }
+
+   footer {
+      position:absolute;
+      bottom:0;
+      width:100%;
+      height:60px;
+      background:#262626;
+   }
+
+   p {
+    color: #595959;
+    padding-left: 40px;
+    /*text-align: center;*/
+   }

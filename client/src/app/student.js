@@ -1,4 +1,4 @@
-var Students = function(name, image){
+var Student = function(name, image){
 
   this.studentName = name;
   this.image = image;
