@@ -1,22 +1,34 @@
 var Event = function(){
   this.students = [];
-  this.employers =[];
+  this.employers = [];
 }
 
 Event.prototype ={
 
-  addEmployer: function(name, logo){
-    this.employers.push({
-      'employersName': name,
-      'employersLogo': logo
-    })
+  addEmployer: function(employer){
+    this.employers.push(employer)
   },
 
-  addStudent: function(name, profilePic){
-    this.students.push({
-      'studentName': name,
-      'image': profilePic
-    })
+  addStudent: function(student){
+    this.students.push(student)
   },
+
+  fetchLists:function(){
+     var url = 'http://localhost:3000/lists';
+     var request = new XMLHttpRequest();
+     request.open("GET", url);
+     request.onload = function(){
+       if(request.status === 200){
+         var list = JSON.parse(request.responseText)
+         for(info of list){
+           this.addAccount(new Account(account));
+         }
+         this.onFetchSuccess();
+       }
+     }.bind(this);
+     request.send(null);
+   }
 
 }
+
+module.exports = Event;

@@ -4,7 +4,7 @@ var Employer = function(name, logo){
 }
 
 
-Employers.prototype ={
+Employer.prototype ={
 
   save: function(){
       var url = 'http://localhost:3000/lists';
@@ -21,5 +21,5 @@ Employers.prototype ={
 
 }
 
-module.exports = Employers;
+module.exports = Employer;
 
