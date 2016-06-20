@@ -15,6 +15,11 @@ Event.prototype ={
     this.students.push(student)
   },
 
+  meeting: function(employer, student){
+    employer.hasMet.push(student.number);
+    student.hasMet.push(employer.number)
+  },
+
   fetchLists:function(){
    var url = 'http://localhost:3000/lists';
    var request = new XMLHttpRequest();

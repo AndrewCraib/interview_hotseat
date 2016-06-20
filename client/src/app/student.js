@@ -2,8 +2,9 @@ var Student = function(name, image, number){
 
   this.name = name;
   this.image = image;
-  this.type = 'student'
-  this.number = number
+  this.type = 'student';
+  this.number = number;
+  this.hasMet = [];
 
 }
 

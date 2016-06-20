@@ -110,6 +110,11 @@
 	    this.students.push(student)
 	  },
 	
+	  meeting: function(employer, student){
+	    employer.hasMet.push(student.number);
+	    student.hasMet.push(employer.number)
+	  },
+	
 	  fetchLists:function(){
 	   var url = 'http://localhost:3000/lists';
 	   var request = new XMLHttpRequest();
@@ -144,6 +149,7 @@
 	  this.image = logo;
 	  this.type = 'employer'
 	  this.number = number;
+	  this.hasMet = []
 	}
 	
 	
@@ -176,8 +182,9 @@
 	
 	  this.name = name;
 	  this.image = image;
-	  this.type = 'student'
-	  this.number = number
+	  this.type = 'student';
+	  this.number = number;
+	  this.hasMet = [];
 	
 	}
 	

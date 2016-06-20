@@ -16,7 +16,6 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
-
 app.get('/lists', function(req, res){
   MongoClient.connect(url, function(err, db){
     var collection = db.collection('participants');
@@ -31,7 +30,7 @@ app.post('/lists', function(req,res) {
   console.log('body',req.body);
   MongoClient.connect(url, function(err,db) {
     var collection = db.collection('participants');
-    collection.insert({"name": req.body.name, "image": req.body.image, "type": req.body.type, "number": req.body.number})
+    collection.insert({"name": req.body.name, "image": req.body.image, "type": req.body.type, "number": req.body.number, "hasMet": req.body.hasMet})
     res.status(200).end();
     db.close();
   })
