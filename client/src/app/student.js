@@ -1,8 +1,9 @@
-var Student = function(name, image){
+var Student = function(name, image, number){
 
   this.name = name;
   this.image = image;
   this.type = 'student'
+  this.number = number
 
 }
 

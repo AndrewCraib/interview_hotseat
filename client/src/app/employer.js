@@ -1,7 +1,8 @@
-var Employer = function(name, logo){
+var Employer = function(name, logo, number){
   this.name = name;
   this.image = logo;
   this.type = 'employer'
+  this.number = number;
 }
 
 

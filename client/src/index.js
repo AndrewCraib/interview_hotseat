@@ -22,20 +22,22 @@ window.onload = function(){
   var stdImg = document.getElementById('std-img');
 
   empBtn.onsubmit = function(e){
-    e.preventDefault();
-    var newEmp = new Employer(empName.value, empImg.value)
+    // e.preventDefault();
+    var newEmp = new Employer(empName.value, empImg.value, (event.employers.length+1))
     event.addEmployer(newEmp);
     lists.render()
     console.log(event.employers);
     newEmp.save();
+
   }
 
   stdBtn.onsubmit = function(e){
-    e.preventDefault();
-    var newStd = new Student(stdName.value, stdImg.value);
+    // e.preventDefault();
+    var newStd = new Student(stdName.value, stdImg.value, (event.students.length+1));
     event.addStudent(newStd);
     lists.render()
     newStd.save()
+  
   }
 
 

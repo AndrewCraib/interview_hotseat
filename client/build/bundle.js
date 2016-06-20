@@ -68,20 +68,22 @@
 	  var stdImg = document.getElementById('std-img');
 	
 	  empBtn.onsubmit = function(e){
-	    e.preventDefault();
-	    var newEmp = new Employer(empName.value, empImg.value)
+	    // e.preventDefault();
+	    var newEmp = new Employer(empName.value, empImg.value, (event.employers.length+1))
 	    event.addEmployer(newEmp);
 	    lists.render()
 	    console.log(event.employers);
 	    newEmp.save();
+	
 	  }
 	
 	  stdBtn.onsubmit = function(e){
-	    e.preventDefault();
-	    var newStd = new Student(stdName.value, stdImg.value);
+	    // e.preventDefault();
+	    var newStd = new Student(stdName.value, stdImg.value, (event.students.length+1));
 	    event.addStudent(newStd);
 	    lists.render()
 	    newStd.save()
+	  
 	  }
 	
 	
@@ -115,18 +117,18 @@
 	   request.onload = function(){
 	     if(request.status === 200){
 	       var lists = JSON.parse(request.responseText)
-	       for(info of lists){
-	        if(info.type === 'employer'){
-	         this.addEmployer(info);
-	       }
-	       else{
-	        this.addStudent(info);
+	       for (var i = 0; i < lists.length; i++) {
+	        if(lists[i].type === 'employer') {
+	          this.addEmployer(lists[i]);
+	        }
+	        else{
+	          this.addStudent(lists[i]);
+	        }
 	      }
+	      this.onFetchSuccess();
 	    }
-	    this.onFetchSuccess();
-	  }
-	}.bind(this);
-	request.send(null);
+	  }.bind(this);
+	  request.send(null);
 	}
 	
 	}
@@ -137,10 +139,11 @@
 /* 2 */
 /***/ function(module, exports) {
 
-	var Employer = function(name, logo){
+	var Employer = function(name, logo, number){
 	  this.name = name;
 	  this.image = logo;
 	  this.type = 'employer'
+	  this.number = number;
 	}
 	
 	
@@ -169,11 +172,12 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	var Student = function(name, image){
+	var Student = function(name, image, number){
 	
 	  this.name = name;
 	  this.image = image;
 	  this.type = 'student'
+	  this.number = number
 	
 	}
 	
@@ -218,13 +222,14 @@
 	    for(employer of this.event.employers){
 	      console.log(employer);
 	      var li = document.createElement('li');
-	      li.innerText = employer.logo + " employer name " + employer.Name;
+	      li.innerText = employer.logo + " employer name " + employer.name;
 	      employerList.appendChild(li);
 	    }
 	
 	    for(student of this.event.students){
+	      console.log(student);
 	      var li = document.createElement('li');
-	      li.innerText = student.picture + " student name " + student.Name;
+	      li.innerText = student.picture + " student name " + student.name;
 	      studentList.appendChild(li)
 	    }
 	
