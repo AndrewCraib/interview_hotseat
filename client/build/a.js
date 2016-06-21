@@ -44,11 +44,25 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Canvas = __webpack_require__(1)
+	var Canvas = __webpack_require__(1);
+	var Event = __webpack_require__(2);
+	var Clock = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./app/clock.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var ListView = __webpack_require__(5);
+	var EventView = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./views/event_viewer.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
+	
 	
 	window.onload = function(){
 	  var canvas = new Canvas(document.getElementById('canvas'));
-	  console.log( "view js", canvas);
+	  var event = new Event();
+	  var clock = Clock.new(5)
+	  var lists = new ListView(event);
+	  var eView = new EventView(canvas, event, clock);
+	
+	  event.onFetchSuccess = function(){
+	    lists.render();
+	  }
+	
+	  event.fetchLists();
 	
 	}
 
@@ -224,6 +238,96 @@
 	// module.exports = Shape;
 	
 
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	
+	var Event = function(){
+	  this.students = [];
+	  this.employers = [];
+	  this.onFetchSuccess = null;
+	}
+	
+	Event.prototype ={
+	
+	  addEmployer: function(employer){
+	    this.employers.push(employer)
+	  },
+	
+	  addStudent: function(student){
+	    this.students.push(student)
+	  },
+	
+	  meeting: function(employer, student){
+	    employer.hasMet.push(student.number);
+	    student.hasMet.push(employer.number)
+	  },
+	
+	  fetchLists:function(){
+	   var url = 'http://localhost:3000/lists';
+	   var request = new XMLHttpRequest();
+	   request.open("GET", url);
+	   request.onload = function(){
+	     if(request.status === 200){
+	       var lists = JSON.parse(request.responseText)
+	       for (var i = 0; i < lists.length; i++) {
+	        if(lists[i].type === 'employer') {
+	          this.addEmployer(lists[i]);
+	        }
+	        else{
+	          this.addStudent(lists[i]);
+	        }
+	      }
+	      this.onFetchSuccess();
+	    }
+	  }.bind(this);
+	  request.send(null);
+	}
+	
+	}
+	
+	module.exports = Event;
+
+/***/ },
+/* 3 */,
+/* 4 */,
+/* 5 */
+/***/ function(module, exports) {
+
+	var ListView = function( event ){
+	  this.event = event
+	}
+	
+	ListView.prototype = {
+	  render: function(){
+	    var studentList = document.getElementById('std-ul');
+	    var employerList = document.getElementById('emp-ul');
+	    console.log(this.event);
+	
+	    studentList.innerHTML = "";
+	    employerList.innerHTML = "";
+	
+	    for(employer of this.event.employers){
+	      console.log(employer);
+	      var li = document.createElement('li');
+	      li.innerText = employer.logo + " employer name " + employer.name;
+	      employerList.appendChild(li);
+	    }
+	
+	    for(student of this.event.students){
+	      console.log(student);
+	      var li = document.createElement('li');
+	      li.innerText = student.picture + " student name " + student.name;
+	      studentList.appendChild(li)
+	    }
+	
+	
+	  }
+	}
+	
+	module.exports = ListView;
 
 /***/ }
 /******/ ]);
