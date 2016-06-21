@@ -2,10 +2,6 @@
 var clearButton = document.getElementById('clearButton');
 
 
-  function init() {
-    var s = new CanvasState(document.getElementById('canvas'));
-  }
-
   function Shape(x, y, w, h, fill, number) {
 
     this.x = x || 0;
@@ -165,4 +161,7 @@ var clearButton = document.getElementById('clearButton');
 
     return {x: mx, y: my};
   }
+
+module.exports = CanvasState;
+// module.exports = Shape;
 
