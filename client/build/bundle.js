@@ -48,11 +48,14 @@
 	var Employer = __webpack_require__(2);
 	var Student = __webpack_require__(3);
 	var ListView = __webpack_require__(4);
+	var ClockView = __webpack_require__(5);
 	
 	window.onload = function(){
 	
 	  var event = new Event();
 	  var lists = new ListView(event);
+	  var timer = new ClockView( 12 );
+	  timer.clockRender();
 	
 	  event.onFetchSuccess = function(){
 	    lists.render();
@@ -83,11 +86,12 @@
 	    event.addStudent(newStd);
 	    lists.render()
 	    newStd.save()
-	  
+	
 	  }
 	
 	
 	}
+
 
 /***/ },
 /* 1 */
@@ -238,6 +242,45 @@
 	}
 	
 	module.exports = ListView;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Clock = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../app/clock.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
+	
+	var ClockView = function( session ){
+	  this.clock = new Clock( session );
+	}
+	
+	ClockView.prototype = {
+	
+	  clockRender: function(){
+	    var h1 = document.getElementsByTagName('h3')[0];
+	    var start = document.getElementById('start');
+	    var stop = document.getElementById('stop');
+	    var clear = document.getElementById('clear');
+	
+	    /* Start button */
+	    start.onclick = this.clock.timer();
+	
+	    /* Stop button */
+	    stop.onclick = function() {
+	        clearTimeout(this.clock.t);
+	    }
+	
+	    /* Clear button */
+	    clear.onclick = function() {
+	        h1.textContent = (this.limit > 9 ? (this.limit + ":00") : ("0" + this.limit + ":00" ));
+	        this.clock.seconds = 0; this.clock.minutes = this.clock.limit;
+	    }
+	
+	  }
+	
+	};
+	
+	module.exports = ClockView;
+
 
 /***/ }
 /******/ ]);
