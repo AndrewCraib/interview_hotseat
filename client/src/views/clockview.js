@@ -1,7 +1,7 @@
 var Clock = require('../app/clock.js')
 
-var ClockView = function( session ){
-  this.clock = new Clock( session );
+var ClockView = function( clock ){
+  this.clock = clock;
 }
 
 ClockView.prototype = {

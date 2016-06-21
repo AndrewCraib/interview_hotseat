@@ -3,6 +3,7 @@ var Employer = require('./app/employer.js');
 var Student = require('./app/student.js');
 var ListView = require('./views/viewer.js');
 var ClockView = require('./views/clockview.js');
+var Canvas = require('./app/canvas.js')
 
 window.onload = function(){
 

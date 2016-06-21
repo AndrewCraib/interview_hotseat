@@ -3,6 +3,7 @@ var Employer = function(name, logo, number){
   this.image = logo;
   this.type = 'employer'
   this.number = number;
+  this.hasMet = []
 }
 
 
