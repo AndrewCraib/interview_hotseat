@@ -44,11 +44,19 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 	var Event = __webpack_require__(3);
 	var Employer = __webpack_require__(4);
 	var Student = __webpack_require__(5);
 	var ListView = __webpack_require__(6);
 	var Canvas = __webpack_require__(1)
+=======
+	var Event = __webpack_require__(2);
+	var Employer = __webpack_require__(3);
+	var Student = __webpack_require__(4);
+	var ListView = __webpack_require__(5);
+	
+>>>>>>> 7b001ee0f09e74667fba55ef95b7b136dcf69f4f
 	
 	window.onload = function(){
 	
@@ -92,6 +100,7 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 1 */
 /***/ function(module, exports) {
 
@@ -267,6 +276,10 @@
 /***/ },
 /* 2 */,
 /* 3 */
+=======
+/* 1 */,
+/* 2 */
+>>>>>>> 7b001ee0f09e74667fba55ef95b7b136dcf69f4f
 /***/ function(module, exports) {
 
 	

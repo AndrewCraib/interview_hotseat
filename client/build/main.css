@@ -4,9 +4,11 @@ body{
 
 canvas {
   border: 1px solid black;
-  background-image: url(http://www.hollandaleapartments.com/images/floor%20plans/Embassy-floor-plan.png);
+  background-image: url(./images/floorplan.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
-
+/*../../../../codeclan_floorplan.jpg.png*/
 button {
 
     background: linear-gradient(#990000, #661400);
@@ -53,11 +55,11 @@ button {
       bottom:0;
       width:100%;
       height:60px;
-      background:#262626;
+      background:#003323;
    }
 
    p {
-    color: #595959;
+    color: #e6fff7;
     padding-left: 40px;
     /*text-align: center;*/
    }
@@ -71,9 +73,10 @@ button {
 
 #emp-ul {
   color:red;
-  float: right;
+  display: inline-block;
 }
 
-ul {
+.all-lists {
   display: inline-block;
+  color: black;
 }
