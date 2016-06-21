@@ -17,5 +17,14 @@ window.onload = function(){
   }
 
   event.fetchLists();
+  // console.log( "view js", canvas);
+  // var clearButton = document.getElementById('clearButton');
+
+  // clearButton.onclick = function(e) {
+ 
+  // canvas.clear();
+  }
 
 }
+
+
