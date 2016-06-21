@@ -46,33 +46,32 @@
 
 	var Canvas = __webpack_require__(1);
 	var Event = __webpack_require__(2);
-	var Clock = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./app/clock.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	// var Clock = require('./app/clock.js');
 	var ListView = __webpack_require__(5);
-	var EventView = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./views/event_viewer.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
+	var EventView = __webpack_require__(6)
 	
 	
 	window.onload = function(){
 	  var canvas = new Canvas(document.getElementById('canvas'));
 	  var event = new Event();
-	  var clock = Clock.new(5)
+	  // var clock = Clock.new(5)
 	  var lists = new ListView(event);
-	  var eView = new EventView(canvas, event, clock);
+	  // var eView = new EventView(canvas, event, clock);
 	
 	  event.onFetchSuccess = function(){
 	    lists.render();
 	  }
 	
 	  event.fetchLists();
-
-	  console.log( "view js", canvas);
-	  var clearButton = document.getElementById('clearButton');
+	  // console.log( "view js", canvas);
+	  // var clearButton = document.getElementById('clearButton');
 	
-	  clearButton.onclick = function(e) {
+	  // clearButton.onclick = function(e) {
 	 
-	  canvas.clear();
+	  // canvas.clear();
 	  }
 	
-	}
+	
 	
 	
 
@@ -338,6 +337,40 @@
 	}
 	
 	module.exports = ListView;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	var EventView = function(canvas, event, clock) {
+	  this.canvas = canvas;
+	  this.event = event;
+	  this.clock = clock;
+	
+	}
+	
+	EventView.prototype = {
+	
+	    render: function() {
+	
+	      var changedArray = this.event.students
+	      clock.onZero = function(){
+	        var lastStudent = changedArray.pop();
+	         changedArray = this.event.students.unshift(lastStudent);
+	         for (employer of this.event.employers){
+	          employer.hasMet.push(changedArray[employer.number-1].number)
+	         }
+	         for (student of changedArray){
+	          student.hasMet.push(this.event.employers[changedArray.indexOf[student]].number)
+	         }
+	
+	      }
+	
+	    }
+	
+	}
+	
+	module.exports = EventView;
 
 /***/ }
 /******/ ]);
