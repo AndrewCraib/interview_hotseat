@@ -50,8 +50,11 @@
 	var ListView = __webpack_require__(5);
 	var EventView = __webpack_require__(6)
 	
+	var Clock = __webpack_require__(2);
+
 	
 	window.onload = function(){
+	
 	  var canvas = new Canvas(document.getElementById('canvas'));
 	  var event = new Event();
 	  // var clock = Clock.new(5)
@@ -65,15 +68,36 @@
 	  event.fetchLists();
 	  // console.log( "view js", canvas);
 	  // var clearButton = document.getElementById('clearButton');
+
+	  console.log( "view js", canvas );
+	
+	
+	  var timeTag = document.getElementById('time');
+	  var start = document.getElementById('start');
+	  var stop = document.getElementById('stop');
+	  var clear = document.getElementById('clear');
+	  var myClock = new Clock( 2 );
+	  console.log( "view js", canvas);
+	  var clearButton = document.getElementById('clearButton');
+
 	
 	  // clearButton.onclick = function(e) {
 	 
 	  // canvas.clear();
 	  }
+
+	  start.onclick = function(){
+	    console.log("HEY");
+	    myClock.start();
+	  };
+	
+	  clear.onclick = function(){
+	    myClock.clear();
+	  };
+	}
 	
 	
-	
-	
+
 
 
 /***/ },
@@ -371,6 +395,86 @@
 	}
 	
 	module.exports = EventView;
+
+	var Clock = function( limit ){
+	  // this.timeTag = timeTag;
+	  this.timeTag = document.getElementById('time');
+	  this.limit = limit;
+	  this.minutes = limit;
+	  this.seconds = 0;
+	  this.clockText = (this.limit > 9 ? (this.limit + ":00") : ("0" + this.limit + ":00" ));
+	  this.timeTag.innerText = this.clockText
+	  this.stop = 1; // sets stop the clock on
+	
+	  //this.t = 0;
+	}
+	
+	Clock.prototype = {
+	
+	  start: function(){
+	      setInterval( function(){
+	        if ( this.minutes >= 0 && this.seconds >= -1 ) {
+	          this.seconds -= 1;
+	
+	          if (this.seconds < 0 && this.minutes >= 1){
+	            this.minutes -= 1;
+	            this.seconds = 59;
+	          }
+	
+	          if (this.minutes === 0 && this.seconds === -1){
+	            this.seconds = 0;
+	          }
+	
+	          this.clockText = (this.minutes ? (this.minutes > 9 ? this.minutes : "0" + this.minutes) : "00")
+	                              + ":" + (this.seconds > 9 ? this.seconds : "0" + this.seconds);
+	
+	          this.timeTag.innerText = this.clockText;
+	        }
+	      }.bind(this), 100 );
+	  },
+	
+	  clear: function(){
+	    this.minutes = this.limit;
+	    this.seconds = 0;
+	    this.clockText = (this.limit > 9 ? (this.limit + ":00") : ("0" + this.limit + ":00" ));
+	  }
+	  
+	};
+	
+	module.exports = Clock;
+	
+	// while( this.minutes >= 0 ){
+	//   console.log( this )
+	//   this.seconds -= 1;
+	//   if (this.seconds === -1) {
+	//       this.seconds = 59;
+	//       this.minutes -= 1;
+	//     }
+	//   if ( this.minutes === 0 && this.seconds === 0 ){
+	//     break;
+	//   }
+	// }
+	
+	// start: function(){
+	//   for ( this.minutes; this.minutes >= 0; this.minutes-- ) {
+	//       setInterval( function(){
+	//         for ( var j = ; this.seconds >= -1 )
+	//         this.seconds -= 1;
+	//
+	//         if (this.seconds < 0 && this.minutes >= 1){
+	//           this.minutes -= 1;
+	//           this.seconds = 59;
+	//         }
+	//
+	//         this.clockText = (this.minutes ? (this.minutes > 9 ? this.minutes : "0" + this.minutes) : "00")
+	//                             + ":" + (this.seconds > 9 ? this.seconds : "0" + this.seconds);
+	//
+	//         this.timeTag.innerText = this.clockText;
+	//       }.bind(this), 1000 );
+	//     }
+	//   },
+
+
 
 /***/ }
 /******/ ]);

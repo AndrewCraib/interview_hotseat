@@ -10,7 +10,9 @@ canvas {
 }
 /*../../../../codeclan_floorplan.jpg.png*/
 button {
-    background: linear-gradient(#006644, #003322); 
+
+    background: linear-gradient(#990000, #661400);
+    background: linear-gradient(#006644, #003322);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -21,14 +23,32 @@ button {
     border-radius: 8%;
     }
 
-    
+
     h1 {
         color: #e6fff7;
         font-family: 'Amatic SC', cursive;
         font-size:70px;
-        border: solid 4px #003323;
-        background-color: #006644;
- }
+
+    }
+    h1 span {
+        color: white;
+        font-family: 'Audiowide', cursive;
+    }
+
+    h2 {
+      color:#262626;
+      font-family: 'Audiowide', cursive;
+      font-size: 500px;
+     position:absolute;
+     bottom:0;
+     width:100%;
+     height:100px;
+     /*text-align: right;*/
+    }
+
+    h3 {
+      color: black;
+    }
 
    footer {
       position:absolute;
