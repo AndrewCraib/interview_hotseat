@@ -46,41 +46,49 @@
 
 	var Canvas = __webpack_require__(1);
 	var Clock = __webpack_require__(2);
+	var Event = __webpack_require__(3);
+	var ListView = __webpack_require__(4);
+	var EventView = __webpack_require__(5)
 	
 	window.onload = function(){
 	
 	  var canvas = new Canvas(document.getElementById('canvas'));
-<<<<<<< HEAD
-	  console.log( "view js", canvas );
-	
-	
 	  var timeTag = document.getElementById('time');
 	  var start = document.getElementById('start');
 	  var stop = document.getElementById('stop');
 	  var clear = document.getElementById('clear');
 	  var myClock = new Clock( 2 );
-=======
-	  console.log( "view js", canvas);
-	  var clearButton = document.getElementById('clearButton');
+	  var event = new Event();
+	  var lists = new ListView(event);
 	
-	  clearButton.onclick = function(e) {
-	 
-	  canvas.clear();
+	  event.onFetchSuccess = function(){
+	    lists.render();
 	  }
->>>>>>> 7b001ee0f09e74667fba55ef95b7b136dcf69f4f
+	
+	  event.fetchLists();
+	console.log('lksjdb', event)
+	  var eView = new EventView(event)
+	
+	
+	
 	
 	  start.onclick = function(){
-	    console.log("HEY");
 	    myClock.start();
-	  };
+	      
+	      }
+	  
 	
 	  clear.onclick = function(){
-	    myClock.clear();
+	    console.log('heeeeey')
+	    eView.shuffle();
+	    
 	  };
-	}
 	
 	
-
+	  };
+	 
+	  
+	
 
 
 /***/ },
@@ -293,7 +301,7 @@
 	
 	          this.timeTag.innerText = this.clockText;
 	        }
-	      }.bind(this), 100 );
+	      }.bind(this), 10 );
 	  },
 	
 	  clear: function(){
@@ -337,6 +345,133 @@
 	//     }
 	//   },
 
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	
+	var Event = function(){
+	  this.students = [];
+	  this.employers = [];
+	  this.onFetchSuccess = null;
+	}
+	
+	Event.prototype ={
+	
+	  addEmployer: function(employer){
+	    this.employers.push(employer)
+	  },
+	
+	  addStudent: function(student){
+	    this.students.push(student)
+	  },
+	
+	  meeting: function(employer, student){
+	    employer.hasMet.push(student.number);
+	    student.hasMet.push(employer.number)
+	  },
+	
+	  fetchLists:function(){
+	   var url = 'http://localhost:3000/lists';
+	   var request = new XMLHttpRequest();
+	   request.open("GET", url);
+	   request.onload = function(){
+	     if(request.status === 200){
+	       var lists = JSON.parse(request.responseText)
+	       for (var i = 0; i < lists.length; i++) {
+	        if(lists[i].type === 'employer') {
+	          this.addEmployer(lists[i]);
+	        }
+	        else{
+	          this.addStudent(lists[i]);
+	        }
+	      }
+	      this.onFetchSuccess();
+	    }
+	  }.bind(this);
+	  request.send(null);
+	}
+	
+	}
+	
+	module.exports = Event;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	var ListView = function( event ){
+	  this.event = event
+	}
+	
+	ListView.prototype = {
+	  render: function(){
+	    var studentList = document.getElementById('std-ul');
+	    var employerList = document.getElementById('emp-ul');
+	    console.log(this.event);
+	
+	    studentList.innerHTML = "";
+	    employerList.innerHTML = "";
+	
+	    for(employer of this.event.employers){
+	      var li = document.createElement('li');
+	      li.innerText = employer.logo + " employer name " + employer.name;
+	      employerList.appendChild(li);
+	    }
+	
+	    for(student of this.event.students){
+	      var li = document.createElement('li');
+	      li.innerText = student.image + " student name " + student.name;
+	      studentList.appendChild(li)
+	    }
+	
+	
+	  }
+	}
+	
+	module.exports = ListView;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	var EventView = function(event) {
+	  this.event = event;
+	}
+	
+	EventView.prototype = {
+	
+	  shuffle: function() {
+	
+	    var changedArray = this.event.students
+	
+	    var lastStudent = changedArray.pop();
+	    changedArray = this.event.students.unshift(lastStudent);
+	
+	    for (employer of this.event.employers){
+	      employer.hasMet.push(changedArray[employer.number-1].number)
+	    }
+	    for (student of changedArray){
+	      student.hasMet.push(this.event.employers[changedArray.indexOf[student]].number)
+	    }
+	
+	    stdList = getElementById('std-ul')
+	    while( stdList.firstChild ){
+	      stdList.removeChild( root.firstChild );
+	    }
+	
+	    for(student of changedArray){
+	      var li = document.createElement('li');
+	      li.innerText = student.image + " student name " + student.name;
+	      stdList.appendChild(li);
+	    }
+	
+	  }
+	
+	}
+	
+	module.exports = EventView;
 
 /***/ }
 /******/ ]);
