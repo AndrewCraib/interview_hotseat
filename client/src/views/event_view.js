@@ -1,11 +1,11 @@
-var EventView = function(event, clock) {
-
+var EventView = function(canvas, event, clock) {
+  this.canvas = canvas;
   this.event = event;
   this.clock = clock;
 
 }
 
-CanvasView.prototype = {
+EventView.prototype = {
 
     render: function() {
 
