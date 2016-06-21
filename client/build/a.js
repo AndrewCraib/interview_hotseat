@@ -49,18 +49,23 @@
 	window.onload = function(){
 	  var canvas = new Canvas(document.getElementById('canvas'));
 	  console.log( "view js", canvas);
+	  var clearButton = document.getElementById('clearButton');
+	
+	  clearButton.onclick = function(e) {
+	 
+	  canvas.clear();
+	  }
 	
 	}
+	
+	
+
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	
-	var clearButton = document.getElementById('clearButton');
-	
-	
-	  function Shape(x, y, w, h, fill, number) {
+	function Shape(x, y, w, h, fill, number) {
 	
 	    this.x = x || 0;
 	    this.y = y || 0;
@@ -71,7 +76,9 @@
 	  }
 	
 	  Shape.prototype.draw = function(context) {
+	    
 	    context.fillStyle = this.fill;
+	    context.fillText(this.number, this.x, this.y );
 	    context.fillRect(this.x, this.y, this.w, this.h);
 	  }
 	
@@ -88,6 +95,7 @@
 	    this.height = canvas.height;
 	    this.context = canvas.getContext('2d');
 	
+	
 	    var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
 	    if (document.defaultView && document.defaultView.getComputedStyle) {
 	      this.stylePaddingLeft = parseInt(document.defaultView.getComputedStyle(canvas, null)['paddingLeft'], 10)      || 0;
@@ -102,6 +110,7 @@
 	
 	    this.valid = false; 
 	    this.shapes = [];
+	    this.increment = 1;
 	    this.dragging = false;
 	    this.selection = null;
 	    this.dragoffx = 0; 
@@ -149,14 +158,11 @@
 	    }, true);
 	
 	    canvas.addEventListener('dblclick', function(e) {
-	      for (var i = 0; i < 40; i++) {
-	        number = i
-	      }
 	
+	      this.increment = this.shapes.length + 1;
 	      var mouse = myState.getMouse(e);
-	      myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba(0,255,0,.6)'), number);
-	    }, true);
-	
+	      myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, '#e6fff7', this.increment));
+	    }.bind(this), true);
 	
 	
 	    this.selectionColor = '#CC0000';
@@ -173,6 +179,8 @@
 	  CanvasState.prototype.clear = function() {
 	    this.context.clearRect(0, 0, this.width, this.height);
 	  }
+	
+	
 	
 	  CanvasState.prototype.draw = function() {
 	
