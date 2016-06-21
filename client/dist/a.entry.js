@@ -40,12 +40,11 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Canvas = __webpack_require__(5)
+	var Canvas = __webpack_require__(1)
 	
 	window.onload = function(){
 	  var canvas = new Canvas(document.getElementById('canvas'));
@@ -54,8 +53,7 @@
 	}
 
 /***/ },
-
-/***/ 5:
+/* 1 */
 /***/ function(module, exports) {
 
 	
@@ -228,6 +226,5 @@
 
 
 /***/ }
-
-/******/ });
-//# sourceMappingURL=bundle.js.map
+/******/ ]);
+//# sourceMappingURL=a.entry.js.map

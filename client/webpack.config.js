@@ -1,8 +1,11 @@
+var path = require('path');
+
 var config = {
-  entry: "./src/create.js",
+  entry: {a:"./src/view.js",
+          b:"./src/create.js"},
   output:{
-    filename: "bundle.js",
-    path: "./build"
+    filename: "[name].js",
+    path: './build'
   },
   devtool: "source-map"
 }

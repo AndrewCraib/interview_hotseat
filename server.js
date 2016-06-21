@@ -16,6 +16,10 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
+// app.get('/view', function(req, res){
+//   res.sendFile(path.join(__dirname + '/client/build/view.html'));
+// });
+
 app.get('/lists', function(req, res){
   MongoClient.connect(url, function(err, db){
     var collection = db.collection('participants');
