@@ -38,7 +38,7 @@ window.onload = function(){
     event.addStudent(newStd);
     lists.render()
     newStd.save()
-  
+
   }
 
 

@@ -84,11 +84,12 @@
 	    event.addStudent(newStd);
 	    lists.render()
 	    newStd.save()
-	  
+	
 	  }
 	
 	
 	}
+
 
 /***/ },
 /* 1 */,
