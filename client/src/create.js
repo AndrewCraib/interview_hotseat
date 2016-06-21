@@ -2,15 +2,12 @@ var Event = require('./app/event.js');
 var Employer = require('./app/employer.js');
 var Student = require('./app/student.js');
 var ListView = require('./views/viewer.js');
-var ClockView = require('./views/clockview.js');
 var Canvas = require('./app/canvas.js')
 
 window.onload = function(){
 
   var event = new Event();
   var lists = new ListView(event);
-  var timer = new ClockView( 12 );
-  timer.clockRender();
 
   event.onFetchSuccess = function(){
     lists.render();

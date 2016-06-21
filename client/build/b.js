@@ -44,10 +44,10 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Event = __webpack_require__(2);
-	var Employer = __webpack_require__(3);
-	var Student = __webpack_require__(4);
-	var ListView = __webpack_require__(5);
+	var Event = __webpack_require__(3);
+	var Employer = __webpack_require__(4);
+	var Student = __webpack_require__(5);
+	var ListView = __webpack_require__(6);
 	var Canvas = __webpack_require__(1)
 	
 	window.onload = function(){
@@ -84,11 +84,12 @@
 	    event.addStudent(newStd);
 	    lists.render()
 	    newStd.save()
-	  
+	
 	  }
 	
 	
 	}
+
 
 /***/ },
 /* 1 */
@@ -264,7 +265,8 @@
 
 
 /***/ },
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ function(module, exports) {
 
 	
@@ -315,7 +317,7 @@
 	module.exports = Event;
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	var Employer = function(name, logo, number){
@@ -349,7 +351,7 @@
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	var Student = function(name, image, number){
@@ -384,7 +386,7 @@
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	var ListView = function( event ){
