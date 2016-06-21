@@ -2,7 +2,7 @@ var Event = require('./app/event.js');
 var Employer = require('./app/employer.js');
 var Student = require('./app/student.js');
 var ListView = require('./views/viewer.js');
-var Canvas = require('./app/canvas.js')
+
 
 window.onload = function(){
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "play.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha app/specs"
   },
   "author": "",
   "license": "ISC",
