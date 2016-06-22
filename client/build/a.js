@@ -82,6 +82,8 @@
 	  var eView = new EventView(event)
 	  // console.log(eView.event.students);
 	
+	
+	
 	};
 
 /***/ },
@@ -294,7 +296,7 @@
 	
 	          this.timeTag.innerText = this.clockText;
 	        }
-	      }.bind(this), 10 );
+	      }.bind(this), 1000 );
 	  },
 	
 	  clear: function(){
@@ -396,6 +398,7 @@
 
 	var _ = __webpack_require__(5)
 	var EventView = function(event) {
+	
 	  this.event = event;
 	  this.changedArray = this.event.students
 	
@@ -442,30 +445,36 @@
 	      reRender: function(){
 	    var studentList = document.getElementById('std-ul');
 	    var employerList = document.getElementById('emp-ul');
+	
 	    studentList.innerHTML = "";
 	    employerList.innerHTML = "";
 	
-	    for(employer of this.event.employers){
-	      var li = document.createElement('li');
-	            var img = document.createElement('img');
-	            img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40"
-	            li.innerText = employer.name;
-	            employerList.appendChild(img);
-	            employerList.appendChild(li)
-	          }
+	     var li = document.createElement('li');
+	           var img = document.createElement('img');
+	           img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40"
+	           li.innerText = employer.name;
+	           employerList.appendChild(img);
+	           employerList.appendChild(li)
+	    
 	
-	    for(student of this.changedArray){
+	    for(employer of this.event.employers){
+	     var li = document.createElement('li');
+	           var img = document.createElement('img');
+	           img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40"
+	           li.innerText = employer.name;
+	           employerList.appendChild(img);
+	           employerList.appendChild(li)
+	    }
+	
+	    for(student of this.event.students){
 	      // console.log(student);
 	      var li = document.createElement('li');
 	      li.innerText = student.picture + " student name " + student.name;
 	      studentList.appendChild(li)
-	      }
+	    }
+	  },
 	
-	      if (this.event.students[0].hasMet.length === this.event.employers.length){
-	        window.alert('event complete')
-	      }
-	    },
-	
+	 
 	    initialMeet: function(){
 	           var stdIndex = 0
 	           while( stdIndex < this.event.students.length ){
@@ -474,7 +483,6 @@
 	            stdIndex++
 	           }
 	         }
-	
 	};
 	
 	module.exports = EventView;

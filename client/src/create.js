@@ -27,7 +27,6 @@ window.onload = function(){
     var newEmp = new Employer(empName.value, empImg.value, (event.employers.length+1))
     event.addEmployer(newEmp);
     lists.render()
-    console.log(event.employers);
     newEmp.save();
 
   }

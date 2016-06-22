@@ -1,15 +1,18 @@
 var ListView = function( event ){
   this.event = event
 }
+
 ListView.prototype = {
   render: function(){
     var studentList = document.getElementById('std-ul');
     var employerList = document.getElementById('emp-ul');
 
+
     studentList.innerHTML = "";
     employerList.innerHTML = "";
 
     for(employer of this.event.employers){
+
       var li = document.createElement('li');
       var img = document.createElement('img');
       img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40";
@@ -20,6 +23,7 @@ ListView.prototype = {
     }
 
     for(student of this.event.students){
+
       var li = document.createElement('li');
       li.innerText = "Name: " + student.name + "\n" + "ID: " + student.number;
       studentList.appendChild(li)

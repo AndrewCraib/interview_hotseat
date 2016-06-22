@@ -36,4 +36,6 @@ window.onload = function(){
   var eView = new EventView(event)
   // console.log(eView.event.students);
 
+
+
 };

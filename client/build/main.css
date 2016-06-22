@@ -4,7 +4,6 @@ body{
   background-size: 100%;
   background-repeat: no-repeat;
 }
-
 canvas {
   border: 1px solid black;
   background-image: url(./images/codeclan_floorplan1.jpg);
@@ -25,8 +24,6 @@ button {
     border-radius: 8%;
     padding: 20px 200px;
     }
-
-
     h1 {
         color: #e6fff7;
         font-family: 'Amatic SC', cursive;
@@ -38,14 +35,11 @@ button {
         background: linear-gradient(to right, #003322, #006644 );
         margin-top: 0;
  }
-
-
     }
     h1 span {
         color: white;
         font-family: 'Audiowide', cursive;
     }
-
     h2 {
       color:#262626;
       font-family: 'Audiowide', cursive;
@@ -56,11 +50,9 @@ button {
      height:100px;
      /*text-align: right;*/
     }
-
     h3 {
       color: black;
     }
-
    footer {
       position:absolute;
       bottom:0;
@@ -68,7 +60,6 @@ button {
       height:60px;
       background:#003323;
    }
-
    p {
     color: #e6fff7;
     padding-left: 40px;
@@ -81,24 +72,32 @@ button {
     border-radius: 10%;
    }*/
 
-
-
   #std-ul {
   color: blue;
   float: left;
 }
-
 #emp-ul {
   color:red;
   float: right;
 }
-
 .wrapper {
   float: right;
   background: yellow;
   max-width: 300px;
   margin: 0 auto;
   padding: 10px;
+}
+section {
+  /*background-color: blue;*/
+  margin-top: 700px auto;
+  padding-left: 85px;
+  padding-top: 85px;
+  max-width: 300px;
+  max-height: 300px;
+}
+#button1 {
+margin-bottom: 40px;
+/*padding-right: 50px;*/
 }
 
 section {
