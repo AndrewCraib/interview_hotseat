@@ -1,5 +1,5 @@
 body{
-  background: white;
+  background: #e6fff7;
 }
 
 canvas {
@@ -28,6 +28,12 @@ button {
         color: #e6fff7;
         font-family: 'Amatic SC', cursive;
         font-size:70px;
+        text-align: 20px, 20px, 20px , 20px;
+        border: solid 4px #003323;
+        background-color: #006644;
+        padding-left: 30px;
+ }
+
 
     }
     h1 span {
