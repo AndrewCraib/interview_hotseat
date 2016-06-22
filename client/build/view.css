@@ -1,0 +1,110 @@
+body{
+  background: #b3ffe7;
+
+  /*background-image: green;*/
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+canvas {
+  border: 5px solid #006644;
+  background-image: url(./images/codeclan_floorplan1.jpg);
+  background-repeat: no-repeat;
+  background-size: 110%;
+  display: inline-block;
+  /*width: 50%;*/
+  /*padding-top: 50px;*/
+}
+
+button {
+
+    background: linear-gradient(#006644, #003322);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+    border-radius: 8%;
+    /*padding: 20px 200px;*/
+    }
+
+  h1 {
+           color: #e6fff7;
+           font-family: 'Amatic SC', cursive;
+           font-size:70px;
+           text-align: 20px, 20px, 20px , 20px;
+           /*border: solid 4px #003323;*/
+           /*background-color: #006644;*/
+           padding-left: 30px;
+           background: linear-gradient(to right, #003322, #006644 );
+           margin-top: 0;
+    }
+
+    #clearButton {
+      background: linear-gradient(#cc6666, #602020);
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline;
+      font-size: 16px;
+      border-radius: 50%;
+      max-width: 100px;
+    }
+
+    #start{
+      background: linear-gradient(#33cc33, #602020);
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline;
+      font-size: 16px;
+      border-radius: 10%;
+    }
+
+    #clear{
+      background: linear-gradient(#cc6666, #602020);
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline;
+      font-size: 16px;
+      border-radius: 10%;
+
+    }
+
+    section{
+      /*background-color: blue;*/
+      /*display: flex-block;*/
+      float: right;
+      display: inline-block;
+      background-color: #006644;
+      max-height: 400px;
+      padding-right: 40px;
+    }
+
+    #student-list{
+      display: inline-block;
+
+    }
+
+    #employer-list{
+      display: inline-block;
+    }
+
+    #time {
+      font-size: 3em;
+    }
+
+    ul {
+      color: white;
+      text-decoration: none;
+      padding: 5px;
+    }

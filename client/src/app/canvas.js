@@ -94,7 +94,7 @@ function Shape(x, y, w, h, fill, number) {
 
       this.increment = this.shapes.length + 1;
       var mouse = myState.getMouse(e);
-      myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, '#e6fff7', this.increment));
+      myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, '#006644', this.increment));
     }.bind(this), true);
 
 

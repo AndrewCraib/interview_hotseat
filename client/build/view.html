@@ -3,10 +3,10 @@
 <head>
   <title>View Event</title>
   <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
-  <link rel='stylesheet' type='text/css' href='main.css'>
+  <link rel='stylesheet' type='text/css' href='view.css'>
   <script src="a.js"></script>
 </head>
-<body>
+<body class="background_img">
 
   <h1>View Event</h1>
 
@@ -14,12 +14,12 @@
     <button type="submit">Home</button>
   </form>
 
-  <canvas id="canvas" width="800" height="320"></canvas>
-
+  <canvas id="canvas" width="700" height="320"></canvas>
+<!-- 
   <form>
     <input id="clearButton" type="button" name="clear" value="Clear">
-  </form>
-
+  </form> -->
+<section class="wrapper">
   <div id="student-list">
     <ul id= "std-ul">
 
@@ -31,12 +31,15 @@
 
     </ul>
   </div>
+</section>
+
+  <form>
+    <input id="clearButton" type="button" name="clear" value="Clear">
+  </form>
 
   <h3 id="time"></h3>
 
   <button id="start">start</button>
-  <button id="stop">stop</button>
-  <button id="clear">clear</button>
-
+  <button id="clear">Reset</button>
 </body>
 </html>
