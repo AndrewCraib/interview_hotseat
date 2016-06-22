@@ -32,7 +32,7 @@ Clock.prototype = {
 
           this.timeTag.innerText = this.clockText;
         }
-      }.bind(this), 100 );
+      }.bind(this), 10 );
   },
 
   clear: function(){

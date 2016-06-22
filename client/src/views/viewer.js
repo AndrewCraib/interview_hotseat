@@ -12,14 +12,14 @@ ListView.prototype = {
     employerList.innerHTML = "";
 
     for(employer of this.event.employers){
-      console.log(employer);
+      // console.log(employer);
       var li = document.createElement('li');
       li.innerText = employer.logo + " employer name " + employer.name;
       employerList.appendChild(li);
     }
 
     for(student of this.event.students){
-      console.log(student);
+      // console.log(student);
       var li = document.createElement('li');
       li.innerText = student.picture + " student name " + student.name;
       studentList.appendChild(li)
