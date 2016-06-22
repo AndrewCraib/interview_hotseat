@@ -1,7 +1,6 @@
-
 var Event = function(){
   this.students = [];
-  this.employers = [];
+  this.employers =[];
   this.onFetchSuccess = null;
 }
 
@@ -44,3 +43,4 @@ Event.prototype ={
 }
 
 module.exports = Event;
+
