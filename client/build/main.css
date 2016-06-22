@@ -1,17 +1,17 @@
 body{
-  background: #e6fff7;
+  /*background: #e6fff7;*/
+  background-image: url(./images/background1.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
-
 canvas {
   border: 1px solid black;
-  background-image: url(./images/floorplan.jpg);
+  background-image: url(./images/codeclan_floorplan1.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
 }
 /*../../../../codeclan_floorplan.jpg.png*/
 button {
-
-    background: linear-gradient(#990000, #661400);
     background: linear-gradient(#006644, #003322);
     border: none;
     color: white;
@@ -21,26 +21,24 @@ button {
     display: inline;
     font-size: 16px;
     border-radius: 8%;
+    padding: 20px 200px;
     }
-
-
     h1 {
         color: #e6fff7;
         font-family: 'Amatic SC', cursive;
         font-size:70px;
         text-align: 20px, 20px, 20px , 20px;
-        border: solid 4px #003323;
-        background-color: #006644;
+        /*border: solid 4px #003323;*/
+        /*background-color: #006644;*/
         padding-left: 30px;
+        background: linear-gradient(to right, #003322, #006644 );
+        margin-top: 0;
  }
-
-
     }
     h1 span {
         color: white;
         font-family: 'Audiowide', cursive;
     }
-
     h2 {
       color:#262626;
       font-family: 'Audiowide', cursive;
@@ -51,11 +49,9 @@ button {
      height:100px;
      /*text-align: right;*/
     }
-
     h3 {
       color: black;
     }
-
    footer {
       position:absolute;
       bottom:0;
@@ -63,26 +59,40 @@ button {
       height:60px;
       background:#003323;
    }
-
    p {
     color: #e6fff7;
     padding-left: 40px;
     /*text-align: center;*/
    }
-
-
-
+ /*  li{
+    background-color: #006644;
+    color: #e6fff7;
+    border-radius: 10%;
+   }*/
   #std-ul {
   color: blue;
-  display: inline-block;
+  float: left;
 }
-
 #emp-ul {
   color:red;
-  display: inline-block;
+  float: right;
 }
-
-.all-lists {
-  display: inline-block;
-  color: black;
+.wrapper {
+  float: right;
+  background: yellow;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+}
+section {
+  /*background-color: blue;*/
+  margin-top: 700px auto;
+  padding-left: 85px;
+  padding-top: 85px;
+  max-width: 300px;
+  max-height: 300px;
+}
+#button1 {
+margin-bottom: 40px;
+/*padding-right: 50px;*/
 }

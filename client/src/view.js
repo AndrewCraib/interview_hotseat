@@ -1,24 +1,30 @@
 var Canvas = require('./app/canvas.js');
 var Clock = require('./app/clock.js');
 var Event = require('./app/event.js');
-var ListView = require('./views/viewer.js');
 var EventView = require('./views/event_view.js')
 
 window.onload = function(){
 
   var canvas = new Canvas(document.getElementById('canvas'));
   var event = new Event();
-  var eView = new EventView(event);
-
+  // var eView = new EventView(event);
   var timeTag = document.getElementById('time');
   var start = document.getElementById('start');
-  var stop = document.getElementById('stop');
+  // var stop = document.getElementById('stop');
   var clear = document.getElementById('clear');
   var myClock = new Clock( 2 );
 
+  event.onFetchSuccess = function(){
+    eView.render(); 
+    eView.initialMeet();
+  }
+
+  event.fetchLists();
+  console.log('event fetch list', event);
 
   start.onclick = function(){
     myClock.start();
+    start.style.visibilty = 'hidden'
   };
 
   clear.onclick = function(){
@@ -27,28 +33,10 @@ window.onload = function(){
     eView.reRender();
   };
 
-  var event = new Event();
-  var lists = new ListView(event);
-
-
-  event.onFetchSuccess = function(){
-    eView.render();
-  }
-
-  event.fetchLists();
-
-  console.log('lksjdb', event)
   var eView = new EventView(event)
+  // console.log(eView.event.students);
 
-  start.onclick = function(){
-    myClock.start();
-  }
   
-  clear.onclick = function(){
-    console.log('heeeeey')
-    eView.shuffle();
-    
-  };
 
 };
 

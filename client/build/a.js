@@ -47,24 +47,30 @@
 	var Canvas = __webpack_require__(1);
 	var Clock = __webpack_require__(2);
 	var Event = __webpack_require__(3);
-	var ListView = __webpack_require__(4);
 	var EventView = __webpack_require__(5)
 	
 	window.onload = function(){
 	
 	  var canvas = new Canvas(document.getElementById('canvas'));
 	  var event = new Event();
-	  var eView = new EventView(event);
-	
+	  // var eView = new EventView(event);
 	  var timeTag = document.getElementById('time');
 	  var start = document.getElementById('start');
-	  var stop = document.getElementById('stop');
+	  // var stop = document.getElementById('stop');
 	  var clear = document.getElementById('clear');
 	  var myClock = new Clock( 2 );
 	
+	  event.onFetchSuccess = function(){
+	    eView.render(); 
+	    eView.initialMeet();
+	  }
+	
+	  event.fetchLists();
+	  console.log('event fetch list', event);
 	
 	  start.onclick = function(){
 	    myClock.start();
+	    start.style.visibilty = 'hidden'
 	  };
 	
 	  clear.onclick = function(){
@@ -73,28 +79,10 @@
 	    eView.reRender();
 	  };
 	
-	  var event = new Event();
-	  var lists = new ListView(event);
-	
-	
-	  event.onFetchSuccess = function(){
-	    eView.render();
-	  }
-	
-	  event.fetchLists();
-	
-	  console.log('lksjdb', event)
 	  var eView = new EventView(event)
+	  // console.log(eView.event.students);
 	
-	  start.onclick = function(){
-	    myClock.start();
-	  }
 	  
-	  clear.onclick = function(){
-	    console.log('heeeeey')
-	    eView.shuffle();
-	    
-	  };
 	
 	};
 	
@@ -311,7 +299,7 @@
 	
 	          this.timeTag.innerText = this.clockText;
 	        }
-	      }.bind(this), 10 );
+	      }.bind(this), 1000 );
 	  },
 	
 	  clear: function(){
@@ -408,43 +396,7 @@
 	module.exports = Event;
 
 /***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	var ListView = function( event ){
-	  this.event = event
-	}
-	
-	ListView.prototype = {
-	  render: function(){
-	    var studentList = document.getElementById('std-ul');
-	    var employerList = document.getElementById('emp-ul');
-	    console.log(this.event);
-	
-	    studentList.innerHTML = "";
-	    employerList.innerHTML = "";
-	
-	    for(employer of this.event.employers){
-	
-	      var li = document.createElement('li');
-	      li.innerText = employer.logo + " employer name " + employer.name;
-	      employerList.appendChild(li);
-	    }
-	
-	    for(student of this.event.students){
-	
-	      var li = document.createElement('li');
-	      li.innerText = student.image + " student name " + student.name;
-	      studentList.appendChild(li)
-	    }
-	
-	
-	  }
-	}
-	
-	module.exports = ListView;
-
-/***/ },
+/* 4 */,
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -467,10 +419,12 @@
 	    employerList.innerHTML = "";
 	
 	    for(employer of this.event.employers){
-	      // console.log(employer);
-	      var li = document.createElement('li');
-	      li.innerText = employer.logo + " employer name " + employer.name;
-	      employerList.appendChild(li);
+	     var li = document.createElement('li');
+	           var img = document.createElement('img');
+	           img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40"
+	           li.innerText = employer.name;
+	           employerList.appendChild(img);
+	           employerList.appendChild(li)
 	    }
 	
 	    for(student of this.event.students){
@@ -486,65 +440,58 @@
 	
 	    var lastStudent = this.changedArray.pop();
 	    this.changedArray.unshift(lastStudent);
-	         // console.log('ca after unshift', changedArray);
+	         console.log('ca after unshift', this.changedArray);
 	         for (employer of this.event.employers){
-	          employer.hasMet.push(this.changedArray[employer.number-1].number)
+	          employer.hasMet.push(this.changedArray[employer.number-1])
 	        }
 	        for (student of this.changedArray){
-	
-	          console.log('boo', this.changedArray.indexOf[student]);
-	          student.hasMet.push(this.event.employers[_.findIndex(this.changedArray, function(o) { return o.name === student.name; })].number)
-	
+	         // student.hasMet.push(this.event.employers[_.findIndex(this.changedArray, function(o) { return o.name === student.name; })].number)
+	         student.hasMet.push(this.event.employers[_.findIndex(this.changedArray, { 'name' : student.name }) ])
 	        }
 	
 	      },
 	
-	      reRender: function(){
 	
-	        var studentList = document.getElementById('std-ul');
-	        var employerList = document.getElementById('emp-ul');
 	
-	        studentList.innerHTML = "";
-	        employerList.innerHTML = "";
+	  reRender: function(){
 	
-	        for(employer of this.event.employers){
-	          // console.log(employer);
-	          var li = document.createElement('li');
-	          li.innerText = employer.logo + " employer name " + employer.name;
-	          employerList.appendChild(li);
-	        }
+	    var studentList = document.getElementById('std-ul');
+	    var employerList = document.getElementById('emp-ul');
 	
-	        for(student of this.changedArray){
-	          // console.log(student);
-	          var li = document.createElement('li');
-	          li.innerText = student.picture + " student name " + student.name;
-	          studentList.appendChild(li)
-	        }
-	      },
+	    studentList.innerHTML = "";
+	    employerList.innerHTML = "";
 	
-	        shuffle: function() {
-	
-	          var changedArray = this.event.students
-	
-	          var lastStudent = changedArray.pop();
-	          changedArray = this.event.students.unshift(lastStudent);
-	          for (employer of this.event.employers){
-	            employer.hasMet.push(changedArray[employer.number-1].number)
+	    for(employer of this.event.employers){
+	      var li = document.createElement('li');
+	            var img = document.createElement('img');
+	            img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40"
+	            li.innerText = employer.name;
+	            employerList.appendChild(img);
+	            employerList.appendChild(li)
 	          }
-	          for (student of changedArray){
-	            student.hasMet.push(this.event.employers[changedArray.indexOf[student]].number)
-	          }
-	          stdList = getElementById('std-ul')
-	          while( stdList.firstChild ){
-	            stdList.removeChild( root.firstChild );
-	          }
-	          for(student of changedArray){
-	            var li = document.createElement('li');
-	            li.innerText = student.image + " student name " + student.name;
-	            stdList.appendChild(li);
-	          }
-	        }
-	    }
+	
+	    for(student of this.changedArray){
+	      // console.log(student);
+	      var li = document.createElement('li');
+	      li.innerText = student.picture + " student name " + student.name;
+	      studentList.appendChild(li)
+	      }
+	
+	      if (this.event.students[0].hasMet.length === this.event.employers.length){
+	        window.alert('event complete')
+	      }
+	    },
+	
+	    initialMeet: function(){
+	           var stdIndex = 0
+	           while( stdIndex < this.event.students.length ){
+	             this.event.students[stdIndex].hasMet.push( this.event.employers[stdIndex])
+	             this.event.employers[stdIndex].hasMet.push(this.event.students[stdIndex])
+	            stdIndex++
+	           }
+	         }
+	
+	};
 	
 	module.exports = EventView;
 
