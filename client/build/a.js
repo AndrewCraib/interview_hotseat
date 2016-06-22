@@ -44,141 +44,65 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-	var Canvas = __webpack_require__(5);
-	var Clock = __webpack_require__(6);
-	var Event = __webpack_require__(1);
-	// var ListView = require('./views/viewer.js');
-	var EventView = __webpack_require__(7)
-=======
 	var Canvas = __webpack_require__(1);
 	var Clock = __webpack_require__(2);
 	var Event = __webpack_require__(3);
 	var ListView = __webpack_require__(4);
 	var EventView = __webpack_require__(5)
->>>>>>> 8c53dcbc6d6a603b4960e25eef6d968ee71c4b3a
 	
 	window.onload = function(){
 	
 	  var canvas = new Canvas(document.getElementById('canvas'));
-<<<<<<< HEAD
 	  var event = new Event();
 	  var eView = new EventView(event);
-=======
->>>>>>> 8c53dcbc6d6a603b4960e25eef6d968ee71c4b3a
+	
 	  var timeTag = document.getElementById('time');
 	  var start = document.getElementById('start');
 	  var stop = document.getElementById('stop');
 	  var clear = document.getElementById('clear');
 	  var myClock = new Clock( 2 );
-<<<<<<< HEAD
-=======
-	  var event = new Event();
-	  var lists = new ListView(event);
 	
-	  event.onFetchSuccess = function(){
-	    lists.render();
-	  }
-	
-	  event.fetchLists();
-	console.log('lksjdb', event)
-	  var eView = new EventView(event)
-	
-	
-	
->>>>>>> 8c53dcbc6d6a603b4960e25eef6d968ee71c4b3a
 	
 	  start.onclick = function(){
 	    myClock.start();
-	      
-	      }
-	  
+	  };
 	
 	  clear.onclick = function(){
-<<<<<<< HEAD
 	    myClock.clear();
 	    eView.shuffle();
 	    eView.reRender();
 	  };
 	
-	  
+	  var event = new Event();
+	  var lists = new ListView(event);
+	
 	
 	  event.onFetchSuccess = function(){
 	    eView.render();
 	  }
 	
 	  event.fetchLists();
+	
+	  console.log('lksjdb', event)
+	  var eView = new EventView(event)
+	
+	  start.onclick = function(){
+	    myClock.start();
+	  }
 	  
-	}
-=======
+	  clear.onclick = function(){
 	    console.log('heeeeey')
 	    eView.shuffle();
 	    
 	  };
->>>>>>> 8c53dcbc6d6a603b4960e25eef6d968ee71c4b3a
+	
+	};
 	
 	
-	  };
-	 
-	  
-	
+
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
-
-	
-	var Event = function(){
-	  this.students = [];
-	  this.employers = [];
-	  this.onFetchSuccess = null;
-	}
-	
-	Event.prototype ={
-	
-	  addEmployer: function(employer){
-	    this.employers.push(employer)
-	  },
-	
-	  addStudent: function(student){
-	    this.students.push(student)
-	  },
-	
-	  meeting: function(employer, student){
-	    employer.hasMet.push(student.number);
-	    student.hasMet.push(employer.number)
-	  },
-	
-	  fetchLists:function(){
-	   var url = 'http://localhost:3000/lists';
-	   var request = new XMLHttpRequest();
-	   request.open("GET", url);
-	   request.onload = function(){
-	     if(request.status === 200){
-	       var lists = JSON.parse(request.responseText)
-	       for (var i = 0; i < lists.length; i++) {
-	        if(lists[i].type === 'employer') {
-	          this.addEmployer(lists[i]);
-	        }
-	        else{
-	          this.addStudent(lists[i]);
-	        }
-	      }
-	      this.onFetchSuccess();
-	    }
-	  }.bind(this);
-	  request.send(null);
-	}
-	
-	}
-	
-	module.exports = Event;
-
-/***/ },
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */
 /***/ function(module, exports) {
 
 	function Shape(x, y, w, h, fill, number) {
@@ -350,7 +274,7 @@
 
 
 /***/ },
-/* 6 */
+/* 2 */
 /***/ function(module, exports) {
 
 	var Clock = function( limit ){
@@ -433,22 +357,6 @@
 
 
 /***/ },
-<<<<<<< HEAD
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _ = __webpack_require__(8)
-	var EventView = function(event) {
-	
-	  this.event = event;
-	  this.changedArray = this.event.students
-	 
-	
-	}
-	
-	EventView.prototype = {
-	
-=======
 /* 3 */
 /***/ function(module, exports) {
 
@@ -508,7 +416,6 @@
 	}
 	
 	ListView.prototype = {
->>>>>>> 8c53dcbc6d6a603b4960e25eef6d968ee71c4b3a
 	  render: function(){
 	    var studentList = document.getElementById('std-ul');
 	    var employerList = document.getElementById('emp-ul');
@@ -518,49 +425,81 @@
 	    employerList.innerHTML = "";
 	
 	    for(employer of this.event.employers){
-<<<<<<< HEAD
-	      // console.log(employer);
-=======
->>>>>>> 8c53dcbc6d6a603b4960e25eef6d968ee71c4b3a
+	
 	      var li = document.createElement('li');
 	      li.innerText = employer.logo + " employer name " + employer.name;
 	      employerList.appendChild(li);
 	    }
 	
 	    for(student of this.event.students){
-<<<<<<< HEAD
-	      // console.log(student);
-	      var li = document.createElement('li');
-	      li.innerText = student.picture + " student name " + student.name;
-=======
+	
 	      var li = document.createElement('li');
 	      li.innerText = student.image + " student name " + student.name;
->>>>>>> 8c53dcbc6d6a603b4960e25eef6d968ee71c4b3a
 	      studentList.appendChild(li)
 	    }
 	
 	
-<<<<<<< HEAD
+	  }
+	}
+	
+	module.exports = ListView;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(6)
+	var EventView = function(event) {
+	
+	  this.event = event;
+	  this.changedArray = this.event.students
+	
+	}
+	
+	EventView.prototype = {
+	
+	  render: function(){
+	    var studentList = document.getElementById('std-ul');
+	    var employerList = document.getElementById('emp-ul');
+	    // console.log(this.event);
+	
+	    studentList.innerHTML = "";
+	    employerList.innerHTML = "";
+	
+	    for(employer of this.event.employers){
+	      // console.log(employer);
+	      var li = document.createElement('li');
+	      li.innerText = employer.logo + " employer name " + employer.name;
+	      employerList.appendChild(li);
+	    }
+	
+	    for(student of this.event.students){
+	      // console.log(student);
+	      var li = document.createElement('li');
+	      li.innerText = student.picture + " student name " + student.name;
+	      studentList.appendChild(li)
+	    }
+	
 	  },
 	
-	    shuffle: function() {
+	  shuffle: function() {
 	
-	        var lastStudent = this.changedArray.pop();
-	         this.changedArray.unshift(lastStudent);
+	    var lastStudent = this.changedArray.pop();
+	    this.changedArray.unshift(lastStudent);
 	         // console.log('ca after unshift', changedArray);
 	         for (employer of this.event.employers){
 	          employer.hasMet.push(this.changedArray[employer.number-1].number)
-	         }
-	         for (student of this.changedArray){
-	          
+	        }
+	        for (student of this.changedArray){
+	
 	          console.log('boo', this.changedArray.indexOf[student]);
 	          student.hasMet.push(this.event.employers[_.findIndex(this.changedArray, function(o) { return o.name === student.name; })].number)
-	         
-	      }
 	
-	    },
+	        }
 	
-	    reRender: function(){
+	      },
+	
+	      reRender: function(){
 	
 	        var studentList = document.getElementById('std-ul');
 	        var employerList = document.getElementById('emp-ul');
@@ -581,18 +520,36 @@
 	          li.innerText = student.picture + " student name " + student.name;
 	          studentList.appendChild(li)
 	        }
+	      },
 	
+	        shuffle: function() {
 	
-	      }
+	          var changedArray = this.event.students
 	
+	          var lastStudent = changedArray.pop();
+	          changedArray = this.event.students.unshift(lastStudent);
+	          for (employer of this.event.employers){
+	            employer.hasMet.push(changedArray[employer.number-1].number)
+	          }
+	          for (student of changedArray){
+	            student.hasMet.push(this.event.employers[changedArray.indexOf[student]].number)
+	          }
+	          stdList = getElementById('std-ul')
+	          while( stdList.firstChild ){
+	            stdList.removeChild( root.firstChild );
+	          }
+	          for(student of changedArray){
+	            var li = document.createElement('li');
+	            li.innerText = student.image + " student name " + student.name;
+	            stdList.appendChild(li);
+	          }
+	        }
 	    }
-	
-	
 	
 	module.exports = EventView;
 
 /***/ },
-/* 8 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -17000,10 +16957,10 @@
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)(module), (function() { return this; }())))
 
 /***/ },
-/* 9 */
+/* 7 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -17017,53 +16974,6 @@
 		return module;
 	}
 
-=======
-	  }
-	}
-	
-	module.exports = ListView;
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	var EventView = function(event) {
-	  this.event = event;
-	}
-	
-	EventView.prototype = {
-	
-	  shuffle: function() {
-	
-	    var changedArray = this.event.students
-	
-	    var lastStudent = changedArray.pop();
-	    changedArray = this.event.students.unshift(lastStudent);
-	
-	    for (employer of this.event.employers){
-	      employer.hasMet.push(changedArray[employer.number-1].number)
-	    }
-	    for (student of changedArray){
-	      student.hasMet.push(this.event.employers[changedArray.indexOf[student]].number)
-	    }
-	
-	    stdList = getElementById('std-ul')
-	    while( stdList.firstChild ){
-	      stdList.removeChild( root.firstChild );
-	    }
-	
-	    for(student of changedArray){
-	      var li = document.createElement('li');
-	      li.innerText = student.image + " student name " + student.name;
-	      stdList.appendChild(li);
-	    }
-	
-	  }
-	
-	}
-	
-	module.exports = EventView;
->>>>>>> 8c53dcbc6d6a603b4960e25eef6d968ee71c4b3a
 
 /***/ }
 /******/ ]);

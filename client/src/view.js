@@ -37,30 +37,19 @@ window.onload = function(){
 
   event.fetchLists();
 
-  
-}
-
-
-
-console.log('lksjdb', event)
+  console.log('lksjdb', event)
   var eView = new EventView(event)
-
-
-
 
   start.onclick = function(){
     myClock.start();
-      
-      }
+  }
   
-
   clear.onclick = function(){
     console.log('heeeeey')
     eView.shuffle();
     
   };
 
+};
 
-  };
- 
 
