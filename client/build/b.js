@@ -96,10 +96,9 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	
 	var Event = function(){
 	  this.students = [];
-	  this.employers = [];
+	  this.employers =[];
 	  this.onFetchSuccess = null;
 	}
 	
@@ -142,6 +141,8 @@
 	}
 	
 	module.exports = Event;
+	
+
 
 /***/ },
 /* 4 */,
