@@ -51,7 +51,7 @@ section{
   display: inline-block;
   background-color: #006644;
   border: 5px solid white;
-  max-height: 600px;
+  /*max-height: 10000px;*/
   width: 500px;
   padding-right: 30px;
   border-radius: 5%;

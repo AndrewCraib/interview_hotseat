@@ -70,8 +70,9 @@
 	
 	  empBtn.onsubmit = function(e){
 	    // e.preventDefault();
-	    var newEmp = new Employer(empName.value, empImg.value, (event.employers.length+1))
+	    var newEmp = new Employer(empName.value, (event.employers.length+1))
 	    event.addEmployer(newEmp);
+	    console.log(newEmp);
 	    lists.render()
 	    newEmp.save();
 	
@@ -79,7 +80,7 @@
 	
 	  stdBtn.onsubmit = function(e){
 	    // e.preventDefault();
-	    var newStd = new Student(stdName.value, stdImg.value, (event.students.length+1));
+	    var newStd = new Student(stdName.value, (event.students.length+1));
 	    event.addStudent(newStd);
 	    lists.render()
 	    newStd.save()
@@ -151,9 +152,9 @@
 /* 7 */
 /***/ function(module, exports) {
 
-	var Employer = function(name, logo, number){
+	var Employer = function(name, number){
 	  this.name = name;
-	  this.image = logo;
+	  // this.image = logo;
 	  this.type = 'employer'
 	  this.number = number;
 	  this.hasMet = []
@@ -238,7 +239,7 @@
 	      var li = document.createElement('li');
 	      var img = document.createElement('img');
 	      img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40";
-	      li.innerText = employer.number + ' ' + employer.name;
+	      li.innerText = employer.name;
 	      employerList.appendChild(img);
 	      employerList.appendChild(li)
 	     

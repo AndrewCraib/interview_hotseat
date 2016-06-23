@@ -1,1 +1,5 @@
 node_modules/
+./build/a.js
+./build/b.js
+./build/a.js.map
+./build/b.js.map

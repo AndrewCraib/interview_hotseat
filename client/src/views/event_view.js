@@ -58,7 +58,7 @@ EventView.prototype = {
      var li = document.createElement('li');
            var img = document.createElement('img');
            img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40"
-           li.innerText = employer.name;
+           li.innerText = employer.number + " " + employer.name;
            employerList.appendChild(img);
            employerList.appendChild(li)
     }

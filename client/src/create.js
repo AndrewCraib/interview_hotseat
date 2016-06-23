@@ -24,8 +24,9 @@ window.onload = function(){
 
   empBtn.onsubmit = function(e){
     // e.preventDefault();
-    var newEmp = new Employer(empName.value, empImg.value, (event.employers.length+1))
+    var newEmp = new Employer(empName.value, (event.employers.length+1))
     event.addEmployer(newEmp);
+    console.log(newEmp);
     lists.render()
     newEmp.save();
 
@@ -33,7 +34,7 @@ window.onload = function(){
 
   stdBtn.onsubmit = function(e){
     // e.preventDefault();
-    var newStd = new Student(stdName.value, stdImg.value, (event.students.length+1));
+    var newStd = new Student(stdName.value, (event.students.length+1));
     event.addStudent(newStd);
     lists.render()
     newStd.save()

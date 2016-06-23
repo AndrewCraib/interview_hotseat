@@ -1,6 +1,6 @@
-var Employer = function(name, logo, number){
+var Employer = function(name, number){
   this.name = name;
-  this.image = logo;
+  // this.image = logo;
   this.type = 'employer'
   this.number = number;
   this.hasMet = []
