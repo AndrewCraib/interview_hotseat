@@ -1,0 +1,108 @@
+body{
+  background: #b3ffe7;
+
+  /*background-image: green;*/
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+button {
+
+  background: linear-gradient(#006644, #003322);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16px;
+  border-radius: 8%;
+  /*padding: 20px 200px;*/
+}
+
+button:hover {
+  background: linear-gradient(#004d1a, #006644);
+ border:#003322;
+ margin: 2px solid #003322;
+}
+
+h1 {
+ color: #e6fff7;
+ font-family: 'Amatic SC', cursive;
+ font-size:70px;
+ text-align: 20px, 20px, 20px , 20px;
+ padding-left: 30px;
+ background: linear-gradient(to right, #003322, #006644 );
+ margin-top: 0;
+}
+
+
+#student-list{
+  display: inline-block;
+  /*  float: left;*/
+
+}
+
+#employer-list{
+  display: inline-block;
+  /*float: right;*/
+}
+section{
+  /*float: right;*/
+  display: inline-block;
+  background-color: #006644;
+  border: 5px solid white;
+  max-height: 600px;
+  width: 500px;
+  padding-right: 30px;
+  border-radius: 5%;
+  padding-left: 80px;
+  text-align: center;
+}
+
+li {
+  color: white;
+  background: linear-gradient(#006644, #001a11);
+  list-style-type: none;
+  padding: 5px;
+  font-family: 'Candal', sans-serif;
+  border-radius: 8%;
+}
+
+img{
+  padding-top: 10px;
+}
+
+#student-btn {
+ width: 600px;
+ border: 5px solid #006644;
+ border-radius: 5%;
+ color: black;
+ background-color: white;
+ list-style-type: none;
+ padding: 5px;
+ font-family: 'Candal', sans-serif;
+ display: inline-block;
+
+}
+
+#employer-btn {
+  width: 600px;
+  border: 5px solid #006644;
+  border-radius: 5%;
+  color: black;
+  background-color: white;
+  list-style-type: none;
+  padding: 5px;
+  font-family: 'Candal', sans-serif;
+  display: inline-block;
+
+}
+
+input[type=text] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  /*border: black;*/
+  border-radius: 5%;
+}

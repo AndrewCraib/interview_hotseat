@@ -1,6 +1,6 @@
 body{
   /*background: #e6fff7;*/
-  background-image: url(./images/background1.png);
+  background-image: url(../images/background1.png);
   background-size: 100%;
   background-repeat: no-repeat;
 }
@@ -24,6 +24,13 @@ button {
     border-radius: 8%;
     padding: 20px 200px;
     }
+    
+    button:hover {
+      background: linear-gradient(#004d1a, #006644);
+     border:#003322;
+     margin: 2px solid #003322;
+    }
+
     h1 {
         color: #e6fff7;
         font-family: 'Amatic SC', cursive;

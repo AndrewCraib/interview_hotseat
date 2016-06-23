@@ -415,7 +415,7 @@
 	     var li = document.createElement('li');
 	           var img = document.createElement('img');
 	           img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40"
-	           li.innerText = employer.name;
+	           li.innerText = employer.number + ' ' +employer.name;
 	           employerList.appendChild(img);
 	           employerList.appendChild(li)
 	    }
@@ -423,8 +423,11 @@
 	    for(student of this.event.students){
 	      // console.log(student);
 	      var li = document.createElement('li');
-	      li.innerText = student.picture + " student name " + student.name;
-	      studentList.appendChild(li)
+	      var img = document.createElement('img');
+	      img.src = "//logo.clearbit.com/codeclan.com?size=40"
+	      li.innerText = "Student Name: " + student.name;
+	      studentList.appendChild(img);
+	      studentList.appendChild(li);
 	    }
 	  },
 	
@@ -449,14 +452,6 @@
 	    studentList.innerHTML = "";
 	    employerList.innerHTML = "";
 	
-	     var li = document.createElement('li');
-	           var img = document.createElement('img');
-	           img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40"
-	           li.innerText = employer.name;
-	           employerList.appendChild(img);
-	           employerList.appendChild(li)
-	    
-	
 	    for(employer of this.event.employers){
 	     var li = document.createElement('li');
 	           var img = document.createElement('img');
@@ -469,8 +464,11 @@
 	    for(student of this.event.students){
 	      // console.log(student);
 	      var li = document.createElement('li');
-	      li.innerText = student.picture + " student name " + student.name;
-	      studentList.appendChild(li)
+	      var img = document.createElement('img');
+	      img.src = "//logo.clearbit.com/codeclan.com?size=40"
+	      li.innerText = "Student Name: " + student.name;
+	      studentList.appendChild(img);
+	      studentList.appendChild(li);
 	    }
 	  },
 	
