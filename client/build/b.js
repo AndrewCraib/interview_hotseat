@@ -238,7 +238,7 @@
 	      var li = document.createElement('li');
 	      var img = document.createElement('img');
 	      img.src = "//logo.clearbit.com/" + employer.name.toLowerCase().replace(/ /g,'') +".com?size=40";
-	      li.innerText = employer.name;
+	      li.innerText = employer.number + ' ' + employer.name;
 	      employerList.appendChild(img);
 	      employerList.appendChild(li)
 	     
@@ -247,8 +247,11 @@
 	    for(student of this.event.students){
 	
 	      var li = document.createElement('li');
-	      li.innerText = "Name: " + student.name + "\n" + "ID: " + student.number;
-	      studentList.appendChild(li)
+	      var img = document.createElement('img');
+	      img.src = "//logo.clearbit.com/codeclan.com?size=40"
+	      li.innerText = "Student Name: " + student.name;
+	      studentList.appendChild(img);
+	      studentList.appendChild(li);
 	    }
 	
 	  }

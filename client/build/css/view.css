@@ -8,7 +8,7 @@ body{
 
 canvas {
   border: 5px solid #006644;
-  background-image: url(./images/codeclan_floorplan1.jpg);
+  background-image: url(../images/codeclan_floorplan1.jpg);
   background-repeat: no-repeat;
   background-size: 110%;
   display: inline-block;
@@ -28,6 +28,12 @@ button {
     font-size: 16px;
     border-radius: 8%;
     /*padding: 20px 200px;*/
+    }
+
+    button:hover {
+      background: linear-gradient(#004d1a, #006644);
+     border:#003322;
+     margin: 2px solid #003322;
     }
 
   h1 {
@@ -86,25 +92,41 @@ button {
       float: right;
       display: inline-block;
       background-color: #006644;
-      max-height: 400px;
-      padding-right: 40px;
+      border: 5px solid white;
+      max-height: 600px;
+      width: 500px;
+      padding-right: 30px;
+      border-radius: 5%;
     }
 
     #student-list{
       display: inline-block;
+    /*  float: left;*/
 
     }
 
     #employer-list{
       display: inline-block;
+      float: right;
     }
 
     #time {
       font-size: 3em;
+      font-family: 'Russo One', sans-serif;
+      background-color: white;
+      border: 3px solid black;
+      border-radius: 15px;
+      width: 200px;
+      text-align: center;
     }
 
-    ul {
+    li {
       color: white;
-      text-decoration: none;
+      list-style-type: none;
       padding: 5px;
+      font-family: 'Candal', sans-serif;
     }
+
+   
+
+  
